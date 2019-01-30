@@ -96,12 +96,6 @@ export default {
   created: function() {
     this.cart.map((el, i) => (this.changedQuantity[i] = el.quantity));
   },
-  mounted() {
-    //this.$el.addEventListener('click', this.updateCartOpen());
-  },
-  beforeDestroy() {
-    //this.$el.removeEventListener('click', this.updateCartOpen());
-  },
   methods: {
     justNumbers(i) {
       const reg = new RegExp(/\D/g);
