@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
     <div class="container">
       <div class="card-columns">
         <div class="card" v-for="(post, i) in posts">
