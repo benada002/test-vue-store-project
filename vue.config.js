@@ -2,7 +2,7 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     host: '0.0.0.0',
-    before(app) {
+    after(app) {
       app.get('/api/:howMany', (req, res) => {
         const send = [];
         for (let i = 0; i < (req.params.howMany > 0 ? req.params.howMany : 1); i++) {
