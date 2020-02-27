@@ -1,5 +1,6 @@
 module.exports = {
   devServer: {
+    host: '0.0.0.0',
     before(app) {
       app.get('/api/:howMany', (req, res) => {
         const send = [];
