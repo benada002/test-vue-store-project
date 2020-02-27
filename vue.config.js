@@ -1,5 +1,6 @@
 module.exports = {
   devServer: {
+    disableHostCheck: true,
     host: '0.0.0.0',
     before(app) {
       app.get('/api/:howMany', (req, res) => {
