@@ -79,11 +79,9 @@ export default {
 
     if (typeof Storage !== 'undefined') {
       if (!localStorage.cart) {
-        console.log('notlocal');
         localStorage.setItem('cart', JSON.stringify([]));
       }
       this.$store.state.cart = JSON.parse(localStorage.cart);
-      console.log('local');
     }
   },
   mounted() {
