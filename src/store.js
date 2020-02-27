@@ -49,6 +49,7 @@ export default new Vuex.Store({
     loadingData({ commit }) {
       commit('updateLoading', true);
       api.get('http://localhost:8080/api/10').then(res => {
+        console.log(res.data);
         commit('updatePosts', res.data);
         commit('updateLoading', false);
       });
