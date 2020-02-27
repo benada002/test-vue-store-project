@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     set() {
-      console.log('click');
       this.$store.dispatch('addCart', {
         item: this.$route.params.i,
         quantity: Number.parseInt(this.quantity)
