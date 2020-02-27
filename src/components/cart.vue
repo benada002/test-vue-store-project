@@ -102,10 +102,8 @@ export default {
       const reg2 = new RegExp(/\d/g);
 
       if (!reg.test(this.changedQuantity[i])) {
-        console.log('true', this.changedQuantity[i]);
         return (this.inputIsNumber = true);
       }
-      console.log('false', this.changedQuantity[i].match(/\d/g));
       if (reg2.test(this.changedQuantity[i])) {
         this.changedQuantity[i] = this.changedQuantity[i].match(/\d/g).join('');
       } else {
