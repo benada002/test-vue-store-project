@@ -36,7 +36,7 @@
 <script>
 export default {
   data: () => ({
-    changedQuantity: []
+    changedQuantity: [],
   }),
   computed: {
     loading() {
@@ -50,7 +50,7 @@ export default {
     },
     cartOpen() {
       return this.$store.state.cartOpen;
-    }
+    },
   },
   methods: {
     updateCartStatus() {
@@ -66,13 +66,13 @@ export default {
     changeQuantity(i) {
       this.$store.dispatch('changeQuan', {
         index: i,
-        quantity: Number.parseInt(this.changedQuantity[i])
+        quantity: Number.parseInt(this.changedQuantity[i], 10),
       });
       // this.$forceUpdate()
     },
     detailsLink(i) {
-      return this.posts.findIndex(item => item.title === this.cart[i].title);
-    }
+      return this.posts.findIndex((item) => item.title === this.cart[i].title);
+    },
   },
   created() {
     this.$store.dispatch('loadingData'); // dispatch loading
@@ -85,14 +85,14 @@ export default {
     }
   },
   mounted() {
-    this.$el.addEventListener('click', e => {
+    this.$el.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {
         if (this.cartOpen) {
           this.updateCartStatus();
         }
       }
     });
-  }
+  },
 };
 </script>
 

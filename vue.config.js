@@ -5,7 +5,12 @@ module.exports = {
     before(app) {
       app.get('/api/:howMany', (req, res) => {
         const send = [];
-        for (let i = 0; i < (req.params.howMany > 0 ? req.params.howMany : 1); i++) {
+        for (
+          let i = 0;
+          i < (req.params.howMany > 0 ? req.params.howMany : 1);
+          // eslint-disable-next-line no-plusplus
+          i++
+        ) {
           send.push({
             title: `Lorem ipsum ${i + 1}`,
             price: i + 1,

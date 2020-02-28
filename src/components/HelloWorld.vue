@@ -6,8 +6,8 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 };
 </script>
 
@@ -27,4 +27,4 @@ li {
 a {
   color: #42b983;
 }
-</style> 
+</style>

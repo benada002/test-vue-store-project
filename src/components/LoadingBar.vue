@@ -8,8 +8,8 @@ export default {
   computed: {
     percent() {
       return this.$store.state.loadingProcess;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -23,4 +23,4 @@ export default {
   z-index: 99999;
   background-color: cornflowerblue;
 }
-</style> 
+</style>

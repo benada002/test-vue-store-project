@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+// eslint-disable-next-line import/no-cycle
 import api from './api';
 
 Vue.use(Vuex);
@@ -10,7 +11,7 @@ export default new Vuex.Store({
     cart: [],
     cartOpen: false,
     loading: true,
-    loadingProcess: 0
+    loadingProcess: 0,
   },
   mutations: {
     updatePosts(state, posts) {
@@ -40,15 +41,15 @@ export default new Vuex.Store({
 
     changeQuantity(state, quan) {
       Vue.delete(state.cart[quan.index], 'quantity');
-      Vue.set(state.cart[quan.index], 'quantity', Number.parseInt(quan.quantity));
+      Vue.set(state.cart[quan.index], 'quantity', Number.parseInt(quan.quantity, 10));
       localStorage.cart = JSON.stringify(state.cart);
-      state.cart[quan.index].quantity = Number.parseInt(quan.quantity);
-    }
+      state.cart[quan.index].quantity = Number.parseInt(quan.quantity, 10);
+    },
   },
   actions: {
     loadingData({ commit }) {
       commit('updateLoading', true);
-      api.get('/api/10').then(res => {
+      api.get('/api/10').then((res) => {
         commit('updatePosts', res.data);
         commit('updateLoading', false);
       });
@@ -62,6 +63,6 @@ export default new Vuex.Store({
 
     changeCartStatus({ commit, state }) {
       commit('updateCartOpen', !state.cartOpen);
-    }
-  }
+    },
+  },
 });

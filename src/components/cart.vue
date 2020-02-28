@@ -20,6 +20,7 @@
           <div
             class="row"
             v-for="(post, i) in cart"
+            :key="post"
             :style="(i + 1) % 2 !== 0 ? '' : {backgroundColor: '#f2f2f2',}"
           >
             <div class="col-2 col-md-3">
@@ -83,7 +84,7 @@
 export default {
   data: () => ({
     changedQuantity: [],
-    inputIsNumber: true
+    inputIsNumber: true,
   }),
   computed: {
     cart() {
@@ -91,10 +92,10 @@ export default {
     },
     posts() {
       return this.$store.state.posts;
-    }
+    },
   },
-  created: function() {
-    this.cart.map((el, i) => (this.changedQuantity[i] = el.quantity));
+  created() {
+    this.changedQuantity = this.cart.map(({ quantity }) => quantity);
   },
   methods: {
     justNumbers(i) {
@@ -102,6 +103,7 @@ export default {
       const reg2 = new RegExp(/\d/g);
 
       if (!reg.test(this.changedQuantity[i])) {
+        // eslint-disable-next-line no-return-assign
         return (this.inputIsNumber = true);
       }
       if (reg2.test(this.changedQuantity[i])) {
@@ -109,20 +111,21 @@ export default {
       } else {
         this.changedQuantity[i] = '';
       }
+      // eslint-disable-next-line no-return-assign
       return (this.inputIsNumber = false);
     },
     priceAll() {
-      let price = 0;
-      this.$store.state.cart.map(element => (price += element.price * element.quantity));
-      return price;
+      return this.$store.state.cart.reduce((acc, { price, quantity }) => acc + price * quantity);
     },
     deleteItem(value) {
       this.changedQuantity.splice(value, 1);
       this.$store.commit('deleteCartItem', value);
     },
+    // eslint-disable-next-line consistent-return
     changeQuantity(i) {
-      const quan = Number.parseInt(this.changedQuantity[i]);
+      const quan = Number.parseInt(this.changedQuantity[i], 10);
       if (Number.isNaN(quan)) {
+        // eslint-disable-next-line no-return-assign
         return (this.inputIsNumber = false);
       }
       if (quan === 0) {
@@ -132,14 +135,14 @@ export default {
       this.changedQuantity[i] = '';
     },
     detailsLink(i) {
-      return this.posts.findIndex(item => item.title === this.cart[i].title);
+      return this.posts.findIndex((item) => item.title === this.cart[i].title);
     },
     updateCartOpen() {
       this.$store.dispatch('changeCartStatus');
-    }
-  }
+    },
+  },
 };
-</script> 
+</script>
 
 <style lang="scss">
 .cart-details {

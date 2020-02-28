@@ -42,7 +42,10 @@
             <div
               class="alert alert-success"
               role="alert"
-            >This item is already in your cart. To change the quantity, or delete it, go to the cart.</div>
+            >
+              // eslint-disable-next-line max-len
+            This item is already in your cart. To change the quantity, or delete it, go to the cart.
+            </div>
           </div>
         </div>
       </div>
@@ -59,7 +62,7 @@
 export default {
   name: 'Details',
   data: () => ({
-    quantity: 1
+    quantity: 1,
   }),
   computed: {
     post() {
@@ -67,13 +70,13 @@ export default {
     },
     cart() {
       return this.$store.state.cart;
-    }
+    },
   },
   methods: {
     set() {
       this.$store.dispatch('addCart', {
         item: this.$route.params.i,
-        quantity: Number.parseInt(this.quantity)
+        quantity: Number.parseInt(this.quantity, 10),
       });
     },
     valueFocus(model) {
@@ -83,8 +86,8 @@ export default {
       if (this[model] < 1) {
         this[model] = 1;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
