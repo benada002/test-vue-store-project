@@ -2,9 +2,9 @@
   <div class="about">
     <div class="container">
       <div class="card-columns">
-        <div class="card" v-for="(post, i) in posts">
+        <div class="card" v-for="(post, i) in posts" v-bind:key="post">
           <router-link :to="`/details/${i}`">
-            <img alt=" " class="card-img-top" :src="post.images[0]">
+            <img alt=" " class="card-img-top" :src="post.images[0]" />
             <div class="card-body">
               <h5 class="card-title">{{post.title}}</h5>
               <p class="card-text">{{post.price}}€</p>
@@ -22,8 +22,8 @@ export default {
   computed: {
     posts() {
       return this.$store.state.posts;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -39,4 +39,4 @@ export default {
     font-weight: 600;
   }
 }
-</style> 
+</style>
