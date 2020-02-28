@@ -115,7 +115,7 @@ export default {
       return (this.inputIsNumber = false);
     },
     priceAll() {
-      return this.$store.state.cart.reduce((acc, { price, quantity }) => acc + price * quantity);
+      return this.$store.state.cart.reduce((acc, { price, quantity }) => acc + price * quantity, 0);
     },
     deleteItem(value) {
       this.changedQuantity.splice(value, 1);

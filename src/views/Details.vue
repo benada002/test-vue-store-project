@@ -43,8 +43,8 @@
               class="alert alert-success"
               role="alert"
             >
-              // eslint-disable-next-line max-len
-            This item is already in your cart. To change the quantity, or delete it, go to the cart.
+              {{ /* eslint-disable-next-line max-len */ }}
+              This item is already in your cart. To change the quantity, or delete it, go to the cart.
             </div>
           </div>
         </div>
