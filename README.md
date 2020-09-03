@@ -1,1 +1,1 @@
-# test-vue-store-project
+# Vue Store Project
